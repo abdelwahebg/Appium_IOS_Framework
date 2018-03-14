@@ -2,6 +2,7 @@ package manager;
 
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.IOSElement;
+import io.appium.java_client.remote.IOSMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -27,7 +28,7 @@ public class IOSDriverManager {
     public final static String DEVICE_NAME = PropertyUtils.getProperty("ios.device.name");
     public final static String APP_FULL_RESET = PropertyUtils.getProperty("ios.app.full.reset");
     public final static int IMPLICIT_WAIT = PropertyUtils.getIntegerProperty("implicitWait", 30);
-
+    public final static String WDA_LOCAL_PORT = "5230";
 
     public static DesiredCapabilities getIOSCaps() {
         DesiredCapabilities caps = DesiredCapabilities.iphone();
@@ -35,7 +36,14 @@ public class IOSDriverManager {
         caps.setCapability(MobileCapabilityType.PLATFORM_NAME, PLATFORM_NAME);
         caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, PLATFORM_VERSION);
         caps.setCapability(MobileCapabilityType.APP, APP_PATH);
-        //caps.setCapability(MobileCapabilityType.FULL_RESET, APP_FULL_RESET);
+      //  caps.setCapability(IOSMobileCapabilityType.WDA_LOCAL_PORT, WDA_LOCAL_PORT);
+
+      //  caps.setCapability("noReset", true);
+      //  caps.setCapability("fullReset", true);
+
+
+
+        caps.setCapability(MobileCapabilityType.FULL_RESET, APP_FULL_RESET);
         return caps;
     }
 
