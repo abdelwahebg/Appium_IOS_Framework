@@ -2,6 +2,13 @@ package utills;
 
 import io.appium.java_client.android.AndroidElement;
 
+/**
+ * Assertion Library
+ *
+ * @author prat3ik
+ *
+ */
+
 public class AssertionUtils {
 
     public static WaitUtils waitUtils = new WaitUtils();

@@ -4,6 +4,9 @@ import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.IOSElement;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
+import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import utills.PropertyUtils;
 import utills.WaitUtils;
@@ -75,5 +78,15 @@ public class IOSDriverManager {
 
     public static void setThreadLocalWebDriver(final IOSDriver driver) {
         webDriver.set(driver);
+    }
+
+    /**
+     * RemoteWebDriver does not implement the TakesScreenshot class if the
+     * driver does have the Capabilities to take a screenshot then Augmenter
+     * will add the TakesScreenshot methods to the instance
+     */
+    public static WebDriver getScreenshotableWebDriver() {
+        final WebDriver augmentedDriver = new Augmenter().augment(getThreadLocalDriver());
+        return augmentedDriver;
     }
 }

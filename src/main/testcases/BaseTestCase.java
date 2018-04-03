@@ -6,10 +6,13 @@ import manager.IOSDriverManager;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import utills.ScreenshotUtils;
+import utills.TestcaseListener;
 import utills.WaitUtils;
 
 import java.lang.reflect.Method;
 
+@Listeners({TestcaseListener.class })
 public class BaseTestCase {
 
     WaitUtils waitUtils = new WaitUtils();
