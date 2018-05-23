@@ -11,7 +11,6 @@ public class SampleAppTestCases extends BaseTestCase {
         final int value1 = 10;
         final int value2 = 5;
 
-        Assert.assertEquals("A","As");
         SampleAppPO po = new SampleAppPO();
         po.typeInTextField1(value1);
         po.typeInTextField2(value2);
