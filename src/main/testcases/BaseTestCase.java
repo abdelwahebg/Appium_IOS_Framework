@@ -3,6 +3,7 @@ package testcases;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.IOSElement;
 import manager.IOSDriverManager;
+import org.apache.commons.io.FileUtils;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
@@ -10,17 +11,21 @@ import utills.ScreenshotUtils;
 import utills.TestcaseListener;
 import utills.WaitUtils;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Method;
 
 @Listeners({TestcaseListener.class })
 public class BaseTestCase {
 
+    public String screenshot_dir = "test-output/";
     WaitUtils waitUtils = new WaitUtils();
 
     @BeforeSuite
-    public void beforeSuite() {
-
+    public void beforeSuite() throws IOException {
+        FileUtils.cleanDirectory(new File(screenshot_dir));
     }
+
 
     @BeforeClass
     public void beforeClass() {
